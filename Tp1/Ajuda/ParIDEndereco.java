@@ -1,4 +1,4 @@
-package aeds3;
+package Ajuda;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,7 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-public class ParIDEndereco implements aeds3.RegistroHashExtensivel<ParIDEndereco> {
+public class ParIDEndereco implements Ajuda.RegistroHashExtensivel<ParIDEndereco> {
 
   private int id;
   private long endereco;

@@ -1,5 +1,4 @@
-package aeds3;
-
+package Ajuda;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -69,6 +68,64 @@ public class Arquivo<T extends Registro> {
     } else
       return null;
   }
+
+  
+/*
+   // Método para rearranjar o arquivo, eliminando registros vazios e compactando-o
+public void rearrangeFile() throws IOException {
+    // Criar um arquivo temporário para armazenar os registros rearranjados
+    RandomAccessFile tempFile = new RandomAccessFile("dados/temp.db", "rw");
+
+    // Posicionar o ponteiro no início do arquivo original
+    arquivo.seek(TAM_CABECALHO);
+    long currentPosition = arquivo.getFilePointer();
+
+    // Instanciar um objeto para obter o tamanho do registro
+    try {
+      T obj = construtor.newInstance();
+    } catch (InstantiationException e) {
+      // Handle the exception here
+      e.printStackTrace();
+    }
+
+    // Iterar sobre os registros do arquivo original
+    while (currentPosition < arquivo.length()) {
+        // Ler a lápide do registro
+        arquivo.seek(currentPosition);
+        byte lapide = arquivo.readByte();
+
+        // Verificar se o registro não está marcado como excluído
+        if (lapide != '*') {
+            // Ler o tamanho do registro
+            short recordSize = arquivo.readShort();
+
+            // Ler o conteúdo do registro
+            byte[] recordBytes = new byte[recordSize];
+            arquivo.readFully(recordBytes);
+
+            // Escrever o registro no arquivo temporário
+            tempFile.seek(tempFile.length());
+            tempFile.writeByte(' '); // Marcar o registro como válido
+            tempFile.writeShort(recordSize);
+            tempFile.write(recordBytes);
+        }
+
+        // Avançar para o próximo registro
+        currentPosition += obj.sizeof();
+    }
+
+    // Fechar os arquivos
+    arquivo.close();
+    tempFile.close();
+
+    // Renomear o arquivo temporário para substituir o original
+    File originalFile = new File("dados/" + this.nomeEntidade + ".db");
+    File temp = new File("dados/temp.db");
+    temp.renameTo(originalFile);
+
+    // Reabrir o arquivo original para atualizar o ponteiro de arquivo
+    arquivo = new RandomAccessFile(originalFile, "rwd");
+*/
 
   public boolean delete(int id) throws Exception {
     ParIDEndereco pie = indiceDireto.read(id);

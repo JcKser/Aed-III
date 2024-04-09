@@ -1,4 +1,4 @@
-package aeds3;
+package Ajuda;
 
 public interface Registro extends Cloneable, Comparable<Object> {
   public void setID(int id);
@@ -12,4 +12,6 @@ public interface Registro extends Cloneable, Comparable<Object> {
   public Object clone() throws CloneNotSupportedException;
 
   public int compareTo(Object b);
+
+
 }

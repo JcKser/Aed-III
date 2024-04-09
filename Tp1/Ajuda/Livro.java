@@ -1,4 +1,4 @@
-package entidades;
+package Ajuda;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,7 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.text.NumberFormat;
 
-import aeds3.Registro;
+// No changes required, remove the unused import statement.
 
 public class Livro implements Registro {
 
@@ -71,7 +71,8 @@ public class Livro implements Registro {
   public void setIdCategoria(int idCategoria) {
     this.idCategoria = idCategoria;
   }
-
+  
+  // transformar o objeto em um registro (vetor de bytes) 
   public byte[] toByteArray() throws Exception {
     ByteArrayOutputStream ba_out = new ByteArrayOutputStream();
     DataOutputStream dos = new DataOutputStream(ba_out);
@@ -83,6 +84,7 @@ public class Livro implements Registro {
     return ba_out.toByteArray();
   }
 
+  // transformar um registro (vetor de bytes) no objeto
   public void fromByteArray(byte[] ba) throws Exception {
     byte[] straux = new byte[13];
     ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
@@ -95,6 +97,7 @@ public class Livro implements Registro {
     this.idCategoria = dis.readInt();
   }
 
+  
   public String toString() {
     return "ID: " + this.ID +
         "\nISBN: " + this.isbn +
@@ -112,4 +115,15 @@ public class Livro implements Registro {
   public int compareTo(Object b) {
     return this.getID() - ((Livro) b).getID();
   }
+
+/*
+   public int sizeof() {
+        // Calcula e retorna o tamanho total do registro em bytes
+        int idSize = 4; // Supondo que int tem 4 bytes
+        int tituloSize = titulo.length() * 2; // Supondo que cada caractere ocupa 2 bytes
+        int precoSize = 8; // Supondo que double tem 8 bytes
+        int idCategoriaSize = 4; // Supondo que int tem 4 bytes
+        return idSize + tituloSize + precoSize + idCategoriaSize;
+    }
+ */
 }
